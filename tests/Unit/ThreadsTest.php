@@ -2,30 +2,42 @@
 
 namespace Tests\Unit;
 
+use App\Reply;
 use App\Thread;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ThreadsTest extends TestCase
 {
     use DatabaseMigrations;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->thread = factory(Thread::class)->create();
+    }
+
     public function testAUserCanViewAllThreads()
     {
-        $thread = factory(Thread::class)->create();
-
         $response = $this->get('/threads');
 
-        $response->assertSee($thread->title);
+        $response->assertSee($this->thread->title);
     }
 
     public function testAUserCanViewASingleThread()
     {
-        $thread = factory(Thread::class)->create();
+        $response = $this->get('/threads/' .$this->thread->id);
 
-        $response = $this->get('/threads/' .$thread->id);
+        $response->assertSee($this->thread->title);
+    }
 
-        $response->assertSee($thread->title);
+    public function testAUserCanReadRepliesAssociatedToAThread()
+    {
+        $reply = factory(Reply::class)->create(['thread_id' => $this->thread->id]);
+
+        $response = $this->get('/threads/' .$this->thread->id);
+
+        $response->assertSee($reply->body);
     }
 }
