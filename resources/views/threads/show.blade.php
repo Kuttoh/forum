@@ -29,7 +29,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
 
-                    <form method="POST" action="{{ $thread->path(). '/replies' }}">
+                    <form method="post" action="{{ $thread->path(). '/replies' }}">
                         {{ csrf_field() }}
 
                         <div class="form-group">
@@ -38,12 +38,12 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary">Post</button>
-
                     </form>
                 </div>
             </div>
         @else
-            <p class="text-center">Please <a href="{{ route('login') }}">Sign In</a> to participate in this discussion</p>
+            <p class="text-center">Please <a href="{{ route('login') }}">Sign In</a> to participate in this discussion
+            </p>
         @endif
 
     </div>
