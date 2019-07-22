@@ -13,6 +13,13 @@ class ParticipateInForumTest extends TestCase
 {
     use DatabaseMigrations;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutExceptionHandling();
+    }
+
     public function testUnauthorisedUsersMayNotAddReplies()
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');

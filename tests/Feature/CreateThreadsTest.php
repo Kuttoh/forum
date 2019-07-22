@@ -14,6 +14,13 @@ class CreateThreadsTest extends TestCase
 
     use DatabaseMigrations;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutExceptionHandling();
+    }
+
     public function testGuestsMayNotCreateThreads()
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');
@@ -21,6 +28,13 @@ class CreateThreadsTest extends TestCase
         $thread = make(Thread::class);
 
         $this->post('/threads', $thread->toArray());
+    }
+
+    public function testGuestCannotSeeCreateThreadPage()
+    {
+        $this->withExceptionHandling()
+            ->get('/threads/create')
+            ->assertRedirect('/login');
     }
 
     public function testAnAuthenticatedUserCanCreateNewForumThreads()
