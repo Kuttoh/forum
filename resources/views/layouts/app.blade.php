@@ -35,7 +35,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
+
                     <li><a class="nav-link" href="/threads">All Threads</a></li>
+
+                    <li><a class="nav-link" href="/threads/create">New Thread</a></li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
