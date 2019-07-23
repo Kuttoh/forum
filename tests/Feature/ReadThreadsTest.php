@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Channel;
 use App\Thread;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -18,6 +19,8 @@ class ReadThreadsTest extends TestCase
         parent::setUp();
 
         $this->thread = create(Thread::class);
+
+        $this->withoutExceptionHandling();
     }
 
     public function testThreadHasReplies()
@@ -29,6 +32,19 @@ class ReadThreadsTest extends TestCase
     public function testThreadHasOwner()
     {
         $this->assertInstanceOf(User::class, $this->thread->creator);
+    }
+
+    public function testAUserCanFilterThreadsAccordingToAChannel()
+    {
+        $channel = create(Channel::class);
+
+        $threadInChannel = create(Thread::class, ['channel_id' => $channel->id]);
+
+        $threadNotInChannel = create(Thread::class);
+
+        $this->get('threads/' . $channel->slug)
+            ->assertSee($threadInChannel->title)
+            ->assertDontSee($threadNotInChannel->title);
     }
 }
 

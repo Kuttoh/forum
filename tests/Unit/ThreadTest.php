@@ -8,7 +8,7 @@ use App\Channel;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-class ThreadsTest extends TestCase
+class ThreadTest extends TestCase
 {
     use DatabaseMigrations;
 

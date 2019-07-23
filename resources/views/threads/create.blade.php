@@ -14,12 +14,12 @@
 
                             <div class="form-group">
                                 <label for="title">Title:</label>
-                                <input name="title" type="text" class="form-group" id="title">
+                                <input name="title" type="text" class="form-control" id="title">
                             </div>
 
                             <div class="form-group">
                                 <label for="body">Body:</label>
-                                <textarea class="form-group" id="body" name="body" rows="8"></textarea>
+                                <textarea class="form-control" id="body" name="body" rows="8"></textarea>
                             </div>
 
                             <div>
