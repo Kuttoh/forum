@@ -12,7 +12,12 @@ class RepliesController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Thread $thread)
+    /**
+     * @param $channelId
+     * @param Thread $thread
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function store($channelId, Thread $thread)
     {
         $thread->addReply([
             'body' => request('body'),
