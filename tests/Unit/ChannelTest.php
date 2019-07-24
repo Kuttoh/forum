@@ -4,14 +4,13 @@ namespace Tests\Feature;
 
 use App\Channel;
 use App\Thread;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
-
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ChannelTest extends TestCase
 {
     
-    use DatabaseMigrations;
+    use DatabaseTransactions;
 
     public function testAChannelConsistsOfThreads()
     {

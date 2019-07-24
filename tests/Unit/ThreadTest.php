@@ -5,12 +5,12 @@ namespace Tests\Unit;
 use App\Reply;
 use App\Thread;
 use App\Channel;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class ThreadTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseTransactions;
 
 //    protected $thread;
 

@@ -6,13 +6,12 @@ use App\Channel;
 use App\Thread;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ReadThreadsTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseTransactions;
 
     public function setUp(): void
     {

@@ -5,13 +5,13 @@ namespace Tests\Feature;
 use App\Reply;
 use App\Thread;
 use App\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 
 class ParticipateInForumTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseTransactions;
 
     public function setUp(): void
     {
