@@ -45,7 +45,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Channels <span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach($channels as $channel)
+                            @foreach(\App\Channel::all() as $channel)
                                 <li><a class="dropdown-item" href="/threads/{{ $channel->slug }}">{{ $channel->name }}</a></li>
                             @endforeach
                         </ul>
