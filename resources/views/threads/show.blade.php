@@ -43,6 +43,7 @@
 
             <div class="col-md-4">
                 <div class="card" style="margin-bottom:10px">
+                    <div class="card-header">Thread Meta-Information</div>
                     <div class="card-body">
                         <p>This thread was published {{ $thread->created_at->diffForHumans() }} by
                             <a href="#">{{ $thread->creator->name }}</a>, and has {{ $thread->replies_count }} {{ str_plural('comment', $thread->replies_count) }}.
