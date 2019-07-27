@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Channel;
+use App\Reply;
 use App\Thread;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -58,6 +59,21 @@ class ReadThreadsTest extends TestCase
             ->assertSee($threadByIsaac->title)
             ->assertDontSee($threadNotByIsaac->title);
 
+    }
+
+    public function testAUSerCanFilterThreadsByPopularity()
+    {
+        $threadWithTwoReplies = create(Thread::class);
+        create(Reply::class, ['thread_id' => $threadWithTwoReplies->id ], 2);
+
+        $threadWithThreeReplies = create(Thread::class);
+        create(Reply::class, ['thread_id' => $threadWithThreeReplies->id], 3);
+
+        $threadWithNoReplies = $this->thread;
+
+        $response = $this->getJson('threads?popular=1')->json();
+
+        $this->assertEquals([3,2,0], array_column($response, 'replies_count'));
     }
 }
 
