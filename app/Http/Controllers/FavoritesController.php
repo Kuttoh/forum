@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Reply;
-use App\Favorite;
 
 class FavoritesController extends Controller
 {
@@ -14,6 +13,8 @@ class FavoritesController extends Controller
 
     public function store(Reply $reply)
     {
-        return $reply->favorite();
+        $reply->favorite();
+
+        return back();
     }
 }
